@@ -6,10 +6,9 @@ SOURCE_DIR="$REPO_ROOT/dotconfig"
 CONFIG_DIR="$HOME/.config"
 BACKUP_DIR="$HOME/.config_backup_$(date +%Y%m%d_%H%M%S)"
 
-# --- 1. LISTA DE PACOTES COMBINADA (OFICIAIS + AUR) ---
-# O yay é inteligente o suficiente para saber qual vem de onde.
+# --- 1. LISTA DE PACOTES COMBINADA ---
 PACOTES=(
-    # --- Essenciais do Rice ---
+    # --- Essenciais ---
     "hyprland"
     "waybar"
     "hyprpaper"
@@ -18,7 +17,6 @@ PACOTES=(
     "rofi-wayland"
     "wlogout"
     "hyprshot"
-    
     # --- Áudio e Multimídia ---
     "pipewire"
     "wireplumber"
@@ -26,7 +24,6 @@ PACOTES=(
     "pamixer"
     "libpulse"
     "playerctl"
-    
     # --- Sistema e Ferramentas ---
     "kitty"
     "fish"
@@ -39,8 +36,7 @@ PACOTES=(
     "btop"
     "curl"
     "kvantum"
-    
-    # --- Temas e Aparência (Oficiais) ---
+    # --- Temas e Aparência ---
     "nwg-look"
     "papirus-icon-theme"
     "materia-gtk-theme"
@@ -72,8 +68,6 @@ PASTAS_PARA_COPIAR=(
 )
 
 echo "--- INICIANDO SETUP ---"
-
-# --- PASSO 1: Preparar o terreno (Git e Base-Devel) ---
 echo "> Verificando pré-requisitos..."
 if ! pacman -Qi git &> /dev/null || ! pacman -Qi base-devel &> /dev/null; then
     echo "Instalando git e base-devel (necessários para o AUR)..."
@@ -81,8 +75,6 @@ if ! pacman -Qi git &> /dev/null || ! pacman -Qi base-devel &> /dev/null; then
 else
     echo "Pré-requisitos já instalados."
 fi
-
-# --- PASSO 2: Instalar o Yay (AUR Helper) ---
 if ! command -v yay &> /dev/null; then
     echo "> Yay não encontrado. Instalando automaticamente..."
     cd /tmp
@@ -94,34 +86,23 @@ if ! command -v yay &> /dev/null; then
 else
     echo "> Yay já está instalado."
 fi
-
-# --- PASSO 3: Instalar TODOS os pacotes ---
 echo "> Instalando pacotes do sistema e do AUR..."
-# Usamos o yay para tudo, pois ele gerencia pacotes oficiais e AUR juntos
 yay -S --needed --noconfirm "${PACOTES[@]}"
-
-
-# --- PASSO 4: Copiar Configurações (Modo Cópia) ---
 echo "> Copiando Dotfiles de: $SOURCE_DIR"
-
 if [ ! -d "$SOURCE_DIR" ]; then
     echo "ERRO CRÍTICO: Pasta 'dotconfig' não encontrada!"
     exit 1
 fi
-
 mkdir -p "$BACKUP_DIR"
-
 for pasta in "${PASTAS_PARA_COPIAR[@]}"; do
     origem="$SOURCE_DIR/$pasta"
     destino="$CONFIG_DIR/$pasta"
-
     if [ -d "$origem" ]; then
         # Backup se já existir algo
         if [ -e "$destino" ]; then
             echo "Backup: Movendo $pasta antiga para $BACKUP_DIR..."
             mv "$destino" "$BACKUP_DIR/"
         fi
-        
         # Cópia Recursiva
         echo "Copiando: $pasta -> ~/.config/"
         cp -r "$origem" "$destino"
@@ -129,22 +110,14 @@ for pasta in "${PASTAS_PARA_COPIAR[@]}"; do
         echo "AVISO: Pasta '$pasta' não encontrada em 'dotconfig'. Pulando."
     fi
 done
-
-
-# --- PASSO 5: Ajustes Finais ---
 echo "> Aplicando temas e shell..."
-
-# Aplica temas GTK
 gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Nordzy-dark"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-
-# Define Fish como padrão
 if [[ $SHELL != *"fish"* ]]; then
     echo "Mudando shell padrão para Fish..."
     chsh -s $(which fish)
 fi
-
 echo ""
 echo "--- SETUP CONCLUÍDO COM SUCESSO! ---"
 echo "1. Todos os pacotes (incluindo AUR) foram instalados."
