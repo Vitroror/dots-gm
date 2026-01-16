@@ -6,7 +6,7 @@ SOURCE_DIR="$REPO_ROOT/dotconfig"
 CONFIG_DIR="$HOME/.config"
 BACKUP_DIR="$HOME/.config_backup_$(date +%Y%m%d_%H%M%S)"
 
-# --- LISTA DE PACOTES OFICIAIS (PACMAN) ---
+# --- LISTA DE PACOTES ---
 PACOTES_PACMAN=(
     "hyprland"
     "waybar"
