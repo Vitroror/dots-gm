@@ -1,0 +1,228 @@
+/* --- PALETA VIOLETA ESCURO (Baseada no Screenshot) --- */
+@define-color cc-bg rgba(15, 10, 25, 0.90); /* Fundo Roxo Profundo quase preto */
+@define-color noti-border-color rgba(160, 96, 255, 0.4); /* Borda Lilás Neon (igual suas janelas) */
+@define-color noti-bg rgba(30, 20, 45, 0.6); /* Fundo das notificações */
+@define-color noti-bg-hover rgba(40, 25, 60, 0.8);
+@define-color text-color #e0e0e0;
+@define-color mpris-bg rgba(0, 0, 0, 0.4); /* Player mais escuro para contraste */
+@define-color button-active #a060ff; /* O Lilás Brilhante do visualizador de áudio */
+@define-color slider-track rgba(255, 255, 255, 0.1);
+@define-color clear-button #d34e80; /* Magenta/Rosa escuro para o botão de limpar */
+
+* {
+    font-family: 'CodeNewRoman Nerd Font Propo', 'JetBrainsMono Nerd Font', sans-serif;
+}
+
+/* --- JANELA PRINCIPAL --- */
+.control-center {
+    background: @cc-bg;
+    border-radius: 20px;
+    border: 2px solid @noti-border-color; /* Borda mais visível para combinar com o Hyprland */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    padding: 14px;
+}
+
+/* Esconde widgets DND (Não Perturbe) padrão */
+.widget-dnd {
+    margin: 0px;
+    font-size: 0px;
+}
+
+.widget-dnd > switch {
+    font-size: initial;
+    border-radius: 12px;
+    background: @noti-bg;
+    border: 1px solid @noti-border-color;
+    box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+    background: @button-active;
+}
+
+/* --- TÍTULO E BOTÃO LIMPAR --- */
+.widget-title {
+    color: @text-color;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 10px 10px;
+}
+
+.widget-title > button {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-shadow: none;
+    background: @clear-button;
+    border: none;
+    box-shadow: 0 0 5px rgba(211, 78, 128, 0.5); /* Glow suave no botão */
+    border-radius: 12px;
+    padding: 6px 16px;
+    font-weight: bold;
+}
+
+.widget-title > button:hover {
+    background: shade(@clear-button, 1.2);
+    color: #fff;
+}
+
+/* --- LABEL (MENSAGEM DE STATUS) --- */
+.widget-label {
+    margin: 20px 10px;
+}
+.widget-label > label {
+    font-size: 1.2rem;
+    color: alpha(@text-color, 0.7);
+}
+
+/* --- NOTIFICAÇÕES --- */
+.notification-row {
+    outline: none;
+    margin: 10px 0;
+}
+
+.notification {
+    background: @noti-bg;
+    border-radius: 16px;
+    border: 1px solid @noti-border-color;
+    padding: 0;
+    margin: 0px 10px;
+    box-shadow: none;
+}
+
+.notification-content {
+    background: transparent;
+    padding: 10px;
+}
+
+.notification-default-action,
+.notification-action {
+    background: transparent;
+    border-radius: 12px;
+    color: @text-color;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    background: @noti-bg-hover;
+}
+
+.summary {
+    color: @button-active; /* Título da notificação em Lilás */
+    font-weight: bold;
+}
+
+.body {
+    color: alpha(@text-color, 0.9);
+}
+
+.time {
+    color: alpha(@text-color, 0.6);
+    font-size: 0.8rem;
+}
+
+/* --- MUSIC PLAYER (MPRIS) --- */
+.widget-mpris {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.widget-mpris-player {
+    background: @mpris-bg;
+    border-radius: 20px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: @button-active; /* Título da música em Lilás */
+}
+
+.widget-mpris-subtitle {
+    font-size: 0.9rem;
+    color: alpha(@text-color, 0.8);
+}
+
+/* Botões do Player */
+.widget-mpris-player > box > button {
+    border-radius: 50%;
+    color: @text-color;
+    background: transparent;
+    border: none;
+    padding: 5px;
+}
+
+.widget-mpris-player > box > button:hover {
+    background: rgba(160, 96, 255, 0.2); /* Hover violeta */
+}
+
+/* --- SLIDERS DE VOLUME E BRILHO --- */
+.widget-volume {
+    background: @noti-bg;
+    padding: 5px 15px;
+    margin: 10px 10px;
+    border-radius: 16px;
+    border: 1px solid @noti-border-color;
+}
+
+trough {
+    background: @slider-track;
+    border-radius: 20px;
+    min-height: 8px;
+    border: none;
+}
+
+highlight {
+    background: @button-active; /* A barra de volume agora é Lilás Neon */
+    border-radius: 20px;
+    box-shadow: 0 0 5px @button-active; /* Glow no slider */
+}
+
+slider {
+    background: #ffffff;
+    border-radius: 50%;
+    min-width: 10px;
+    min-height: 10px;
+    margin: -3px;
+}
+
+/* --- GRADE DE BOTÕES (RODAPÉ) --- */
+.widget-buttons-grid {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background: @mpris-bg;
+    margin: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    margin: 4px;
+    min-width: 60px;
+    min-height: 50px;
+    border: none;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: rgba(160, 96, 255, 0.15); /* Hover levemente violeta */
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button label {
+    font-size: 1.5rem;
+    color: @text-color;
+}
+
+/* Estado Ativo (Toggle ON) */
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+    background: @button-active; /* Botão ativo fica Lilás */
+    box-shadow: 0 0 10px rgba(160, 96, 255, 0.4); /* Glow */
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+    color: #100a1a; /* Ícone escuro para contraste */
+}

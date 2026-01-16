@@ -1,0 +1,56 @@
+* {
+    background:      #1e1e2eFF;
+    foreground:      #cdd6f4FF;
+    border-color:    #89b4faFF;
+    border-radius:   10px;
+    padding:         10px;
+    font:            "FiraCode Nerd Font 12";
+}
+
+window {
+    location: center;
+    anchor:   center;
+    fullscreen: false;
+    width: 500px;
+    border: 2px;
+    padding: 10px;
+    background-color: @background;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+listview {
+    lines: 10;
+    fixed-height: true;
+    background-color: transparent;
+    padding: 5px 0px;
+    spacing: 5px;
+    cycle: true;
+}
+
+element {
+    border: 0;
+    padding: 5px;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: #89b4fa33;
+    text-color: #89b4faFF;
+}
+
+textbox {
+    text-color: @foreground;
+}
+
+prompt {
+    enabled: true;
+    padding: 10px;
+    text-color: @foreground;
+}
+

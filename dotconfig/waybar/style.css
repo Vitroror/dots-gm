@@ -1,0 +1,390 @@
+@import "themes/mocha.css";
+
+* {
+    border: none;
+    border-radius: 10;
+    font-family: "Geist Mono Nerd Font", "Font Awesome 6 Free" ;
+    font-size: 18px;
+    min-height: 10px;
+}
+window#waybar {
+	background: @crust;
+}
+#workspaces {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-right: 4px;
+    background: @crust; 
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    color: @text;
+    transition: 0.3s;
+}
+#workspaces button {
+    color: @lavender;
+    transition: 0.3s;
+}
+#workspaces button:hover {
+    background: @crust;
+    color: @rosewater;
+}
+#workspaces button.active {
+  color: @mauve;
+  background-color: @crust;
+}
+#tray{
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @mauve;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#custom-cava {
+    font-family: monospace;
+    background: @crust; 
+    color: @mauve;
+    font-size: 14px;
+    padding: 0 6px;
+}
+#tray menu{
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @mauve;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#memory {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @green;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#memory.medium {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @peach;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#memory.high {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @red;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#memory:hover { 
+    color: @rosewater; 
+    background: @crust;
+}
+#pulseaudio.audio {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @mauve;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#pulseaudio.audio:hover{ 
+    background: @crust;
+    color: @rosewater;
+}
+#pulseaudio.audio.muted {
+    color: @red;
+    background: @crust; 
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @red;*/
+    transition: 0.3s;
+}
+#pulseaudio.audio.muted:hover {
+    background: @crust;
+    color: @rosewater; 
+}
+#cpu.low {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @green;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#cpu.medium {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @peach;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#cpu.high {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @red;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#cpu:hover {
+  background-color: @crust;
+  color: @rosewater;
+  transition: all 0.3s ease;
+}
+#custom-temperature {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @green;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#custom-temperature.warning {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @peach;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#custom-temperature.critical {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    margin-bottom: 0px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @red;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#custom-temperature:hover {
+  background-color: @crust;
+  color: @rosewater;
+  transition: all 0.3s ease;
+}
+#network {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @mauve;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#network:hover {
+  background-color: @crust;
+  color: @rosewater;
+  transition: all 0.3s ease;
+}
+#network.disconnected {
+    color: @red;
+    background: @crust; 
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @red;*/
+}
+#network.disconnected:hover {
+    background: @crust;
+    color: @rosewater; 
+}
+#bluetooth {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @mauve;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#bluetooth:hover {
+  background-color: @crust;
+  color: @rosewater;
+  transition: all 0.3s ease;
+}
+#clock {
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @text;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s;
+}
+#mpris{
+    margin-top: 5px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @text;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+    transition: 0.3s; 
+}
+#mpris:hover{
+    background: @crust;
+    color: @rosewater;
+}
+#custom-power {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-left: 8px;
+    margin-right: 17px;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    transition: none;
+    background: @crust; 
+    color: @red;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @red;*/
+    transition: 0.3s;
+}
+#custom-power:hover {
+
+    background: @crust;
+    color: @rosewater;
+    /*border-color: @red;*/
+
+}
+#custom-launcher {
+    font-size: 25px;
+    margin-top: 5px;
+    margin-left: 17px;
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 10px;
+    transition: none;
+    color: @text;
+    background: @crust;
+    transition: 0.3s;
+    /*border-bottom: 3px;
+    border-style: solid;
+    border-color: @mauve;*/
+}
+#custom-launcher:hover { 
+    background: @crust;
+    color: @rosewater;
+}
+tooltip {
+  border-radius: 8px;
+  padding: 15px;
+  background-color: @crust;
+}
+tooltip label {
+  padding: 5px;
+  background-color: @crust;
+  color: @mauve;
+}
