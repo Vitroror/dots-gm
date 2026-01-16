@@ -35,7 +35,6 @@ PACOTES=(
     "blueman"
     "networkmanager"
     "libnotify"
-    "bc"
     "lm_sensors"
     "btop"
     "curl"
@@ -72,7 +71,7 @@ PASTAS_PARA_COPIAR=(
     "Kvantum"
 )
 
-echo "--- INICIANDO SETUP AUTOMATIZADO (Oficial + AUR) ---"
+echo "--- INICIANDO SETUP ---"
 
 # --- PASSO 1: Preparar o terreno (Git e Base-Devel) ---
 echo "> Verificando pré-requisitos..."
